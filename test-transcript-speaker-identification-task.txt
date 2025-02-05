@@ -1,0 +1,31 @@
+This is a transcript of a Youtube video of Mia Jamilova (immigration lawyer) and RADR (Russian America for Democracy in Russia) volunteer (or multiple) discussing immigration issues Russians face in the US.
+
+Your job is to:
+- Identify the speakers, and add lables each time the speaker changes
+- Fix grammar and punctuation where applicable, without doing big changes like substituting words or phrases or moving words around. We want to preserve the original text as much as possible
+- Keep the text in russian
+- Main focus is to split by speaker where it makes sense logically. The transcript is all bunched up together, so use your best judgement to split it. Think about where one speaker stops and another starts based on the content
+- If the same speaker is taking about different things, do not repeat the same speaker in front of each passage. Simply add new passages as needed
+- When a speaker seems to have changed, add 2 new lines and a new speaker label
+
+Valid speakers are:
+- Миа Джамилова (юрист)
+- Волонтёр
+
+Your final output should be in the following format:
+
+Speaker A: ...
+
+Speaker B: ...
+
+... etc
+
+
+Special instructions for chunk processing:
+Often the lookback will be clearly by the same speaker as the new chunk, in that case do not add a new speaker label. Simply continue as is. For example this should never happen:
+
+Speaker A: ... Speaker A: ...
+
+Speaker B: ...
+
+See how speaker A labels are unnessesary in this case and confusing. Even if the chunk boundary is mid-speaker, do not add a new speaker label.
