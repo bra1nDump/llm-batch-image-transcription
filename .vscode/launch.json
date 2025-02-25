@@ -6,11 +6,10 @@
     "configurations": [
         {
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Test OpenAI Vision",
             "type": "node",
             "program": "${workspaceFolder}/main.ts",
             "cwd": "${workspaceFolder}",
-            "env": {},
             "runtimeExecutable": "/opt/homebrew/bin/deno",
             "runtimeArgs": [
                 "run",
@@ -22,9 +21,54 @@
                 "--allow-net"
             ],
             "args": [
-                "./test-transcript.txt",
+                "private-test-data/pages",
+                "--output",
+                "private-test-data/transcription-openai.md",
+                // "--first",
+                // "1",
+                "--debug-dir",
+                "private-test-data/debug-images-openai",
+                "--provider",
+                "openai",
+                "--model",
+                "o1",
                 "--prompt-file",
-                "./test-transcript-speaker-identification-task.txt"
+                "private-test-data/default_prompt.txt",
+                "--separator-header",
+                "detailed"
+            ],
+            "attachSimplePort": 9229
+        },
+        {
+            "request": "launch",
+            "name": "Test Gemini Vision",
+            "type": "node",
+            "program": "${workspaceFolder}/main.ts",
+            "cwd": "${workspaceFolder}",
+            "runtimeExecutable": "/opt/homebrew/bin/deno",
+            "runtimeArgs": [
+                "run",
+                "--unstable",
+                "--inspect-wait",
+                "--allow-read",
+                "--allow-write",
+                "--allow-env",
+                "--allow-net"
+            ],
+            "args": [
+                "private-test-data/pages",
+                "--output",
+                "private-test-data/transcription-gemini.md",
+                "--first",
+                "2",
+                "--debug-dir",
+                "private-test-data/debug-images-gemini",
+                "--provider",
+                "gemini",
+                "--model",
+                "gemini-2.0-pro-exp-02-05",
+                "--prompt-file",
+                "private-test-data/default_prompt.txt"
             ],
             "attachSimplePort": 9229
         }
