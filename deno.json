@@ -1,13 +1,15 @@
 {
-  "tasks": {
-    "dev": "deno run --watch main.ts"
+  "imports": {
+    "cmd-ts": "https://esm.sh/cmd-ts@0.13.0",
+    "openai": "https://esm.sh/openai@4.28.0",
+    "@google/generative-ai": "https://esm.sh/@google/generative-ai@0.1.0"
   },
+  "lock": true,
   "compilerOptions": {
-    "strict": true,
     "lib": [
-      "deno.window",
-      "dom",
-      "esnext"
+      "deno.ns",
+      "deno.unstable",
+      "dom"
     ]
   },
   "fmt": {

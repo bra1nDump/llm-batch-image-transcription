@@ -45,7 +45,7 @@ class OpenAIVisionProvider implements VisionProvider {
         },
       ],
       // Thinking models use max_completion_tokens, other models use max_tokens
-      ...(this.model.startsWith('o') ? { max_completion_tokens: 20000 } : { max_tokens: 20000 }),
+      ...(this.model.startsWith('o') ? { max_completion_tokens: 5_000 } : { max_tokens: 5_000 }),
     });
 
     return response.choices[0].message.content || '';
