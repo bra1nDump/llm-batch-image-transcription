@@ -1,5 +1,5 @@
-import { command, number, option, positional, run, string } from 'cmd-ts';
-import OpenAI from 'openai';
+import { command, number, option, positional, run, string } from 'npm:cmd-ts';
+import OpenAI from 'npm:openai';
 import { GenerativeModel, GoogleGenerativeAI } from 'npm:@google/generative-ai';
 import { config as loadEnv } from 'https://deno.land/x/dotenv@v3.2.2/mod.ts';
 import { join } from 'https://deno.land/std@0.208.0/path/mod.ts';
@@ -212,11 +212,15 @@ export async function processImageFolder(
       console.log(`Debug mode enabled. Processed images will be saved to: ${debugOutputDir}`);
     }
 
-    // Get all PNG files in the folder
+    // Get all supported image files in the folder
+    const supportedExtensions = ['.png', '.jpg', '.jpeg', '.webp', '.bmp'];
     const imageFiles: string[] = [];
     for await (const entry of Deno.readDir(folderPath)) {
-      if (entry.isFile && entry.name.toLowerCase().endsWith('.png')) {
-        imageFiles.push(entry.name);
+      if (entry.isFile) {
+        const lowerName = entry.name.toLowerCase();
+        if (supportedExtensions.some((ext) => lowerName.endsWith(ext))) {
+          imageFiles.push(entry.name);
+        }
       }
     }
 
